@@ -1,0 +1,25 @@
+---
+# Keep Jenkins master updated
+# Author: Mathieu Coavoux
+# Created : 12 April 2019
+# Licence: MIT9+*--
+# Description:  Ansible script which keep the Jenkins master updated
+#               This process is reading a configuration file to see which version of Jenkins we want and others configuration.
+#               Then apply the configuration.
+#               This is a non-destructive process.
+
+- name: "Copy functions.sh script"
+  template:
+    src: "roles/jenkins_update/templates/functions.sh.j2"
+    dest: "{{jenkins_etc_directory}}/init.d/functions.sh"
+
+- name: "Copy jenkins.sh script"
+  template:
+    src: "roles/jenkins_update/templates/jenkins.sh.j2"
+    dest: "{{jenkins_etc_directory}}/init.d/jenkins.sh"
+    mode: u+x
+
+- name: "Copy sysconfig_jenkins.sh script"
+  template:
+    src: "roles/jenkins_update/templates/sysconfig_jenkins.sh.j2"
+    dest: "{{jenkins_etc_directory}}/sysconfig/jenkins"

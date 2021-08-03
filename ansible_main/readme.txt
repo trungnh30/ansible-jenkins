@@ -1,1 +1,1 @@
-docker exec -u 0 -it <containerName>  bash
+docker exec -u 0 -it <containerName> bash

@@ -15,10 +15,6 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --upgrade setuptools
 RUN python3 -m pip install -U pip
 RUN pip3 install --upgrade -r /tmp/requirements.txt
-# RUN pip3 install ansible==2.10.0
-# COPY ansible-4.3.0.tar.gz /tmp/ansible-4.3.0.tar.gz
-# RUN pip3 uninstall ansible-core ansible-base
-# RUN pip3 install /tmp/ansible-4.3.0.tar.gz
 RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PASS}" | \
       chpasswd
 USER ${UID}:${GID}
